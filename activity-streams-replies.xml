@@ -45,10 +45,25 @@
     
     <section anchor="inreplyto" title="The &quot;inReplyTo&quot; Property">
       <t>The <spanx style="verb">inReplyTo</spanx> property MAY be used within any Activity Stream 
-      object to identify another object for which the containing object is
+      object to identify other objects for which the containing object is
       considered a response. The value of the <spanx style="verb">inReplyTo</spanx>
       property is a <xref target="RFC4627">JSON</xref> Array of 
-      <xref target="object-serialization">Objects</xref>.</t>        
+      <xref target="object-serialization">Objects</xref>. For example:</t>    
+      
+<figure><artwork><![CDATA[
+  {
+    "objectType": "comment",
+    "content": "<p>This is a comment</p>",
+    "inReplyTo": [
+      {
+        "objectType": "note",
+        "id": "http://example.org/objects/123",
+        "displayName": "A simple note"
+      }
+    ]
+  }
+]]></artwork></figure>
+          
     </section> 
 
     <section anchor="stream" title="Responses and Activity Summaries">
