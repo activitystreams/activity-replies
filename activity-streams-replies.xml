@@ -48,7 +48,7 @@
       object to identify other objects for which the containing object is
       considered a response. The value of the <spanx style="verb">inReplyTo</spanx>
       property is a <xref target="RFC4627">JSON</xref> Array of 
-      <xref target="object-serialization">Objects</xref>. For example:</t>    
+      Activity Stream Objects. For example:</t>    
       
 <figure><artwork><![CDATA[
   {
@@ -85,7 +85,7 @@
         
         <c><spanx style="verb">attending</spanx></c>
         <c>Used to provide information about the collection of actors that 
-        have responded to an <xref target="event">event</xref> using the 
+        have responded to an <spanx style="verb">event</spanx> using the 
         <spanx style="verb">rsvp-yes</spanx> verb.</c>
         
         <c><spanx style="verb">followers</spanx></c>
@@ -112,12 +112,12 @@
         
         <c><spanx style="verb">notAttending</spanx></c>
         <c>Used to provide information about the collection of actors that 
-        have responded to an <xref target="event">event</xref> using the 
+        have responded to an <spanx style="verb">event</spanx> using the 
         <spanx style="verb">rsvp-no</spanx> verb.</c>
         
         <c><spanx style="verb">maybeAttending</spanx></c>
         <c>Used to provide information about the collection of actors that 
-        have responded to an <xref target="event">event</xref> using the 
+        have responded to an <spanx style="verb">event</spanx> using the 
         <spanx style="verb">rsvp-maybe</spanx> verb.</c>
         
         <c><spanx style="verb">members</spanx></c>
@@ -199,17 +199,22 @@
     </section>
 
     <section title="Security Considerations">
-      <t>TBD</t>      
+      <t>The mechanisms defined herein are subject to the same security considerations
+      as all activities. Applications must be aware of the risk posed by a 
+      malicious third party attempting to artificially inject inappropriate 
+      content into the stream of responses and replies of an object. For instance, 
+      services that aggregate activity streams from multiple sources and attempt
+      to reconstruct a thread of discussion using replies and response from across
+      those sources could be tricked into displaying illegitimate content if 
+      appropriate consideration is not given to the content origin. Mitigation 
+      of such threats is considered out of scope for this specification.</t>     
     </section>
 
-    <section title="IANA Considerations">
-      <t>None.</t>
-    </section>
   </middle>
 
   <back>
     <references title="Normative References">
-      <reference anchor="RFC2119">
+<reference anchor="RFC2119">
         <front>
           <title>Key words for use in RFCs to Indicate Requirement
           Levels</title>
@@ -221,10 +226,15 @@
           <date month="March" year="1997" />
         </front>
       </reference>
-      <reference anchor="activity-schema-01" 
-        target="http://activitystrea.ms/activity-schema.html">      
+      <reference anchor="json-activity-streams-01" 
+        target="http://activitystrea.ms/specs/json/1.0/">      
          <front>
-            <title>Atom Activity Base Schema</title>
+            <title>JSON Activity Streams 1.0</title>
+            
+            <author fullname="James Snell" initials="J.M." surname="Snell">
+              <organization>IBM</organization>
+            </author>
+            
             <author fullname="Martin Atkins" initials="M." surname="Atkins">
               <organization>Six Apart</organization>
             </author>
@@ -244,43 +254,9 @@
             <author fullname="Rob Dolin" initials="R." surname="Dolin">
               <organization>Microsoft</organization>
             </author>
+            
+            <date month="May" year="2011" />
           </front>
-      </reference>
-
-      <reference anchor="RFC3986">
-        <front>
-          <title>Uniform Resource Identifier (URI)</title>
-
-          <author fullname="Tim Berners-Lee" initials="T." surname="Berners-Lee">
-            <organization>W3C/MIT</organization>
-          </author>
-
-          <author fullname="Roy Fielding" initials="R." surname="Fielding">
-            <organization>Day Software</organization>
-          </author>
-          
-          <author fullname="Larry Masinter" initials="L." surname="Masinter">
-            <organization>Adobe Systems</organization>
-          </author>
-
-          <date month="January" year="2005" />
-        </front>
-      </reference>
-
-      <reference anchor="RFC3987">
-        <front>
-          <title>Internationalized Resource Identifiers (IRIs)</title>
-
-          <author fullname="Martin Duerst" initials="M." surname="Duerst">
-            <organization></organization>
-          </author>
-
-          <author fullname="Michel Suignard" initials="M." surname="Suignard">
-            <organization></organization>
-          </author>
-
-          <date month="January" year="2005" />
-        </front>
       </reference>
 
       <reference anchor="RFC4627">
@@ -297,31 +273,6 @@
         </front>
       </reference>
 
-      <reference anchor="draft-nottingham-http-link-header-10">
-        <front>
-          <title>Web Linking</title>
-
-          <author fullname="Mark Nottingham" initials="M."
-                  surname="Nottingham">
-            <organization></organization>
-          </author>
-
-          <date day="5" month="May" year="2010" />
-        </front>
-      </reference>
-
-      
-      <reference anchor="RFC3339">
-        <front>
-          <title>Date and Time on the Internet: Timestamps</title>
-
-          <author fullname="Graham Klyne" initials="G." surname="Klyne">
-            <organization></organization>
-          </author>
-
-          <date month="July" year="2002" />
-        </front>
-      </reference>
       </references>
 
     <section title="Acknowledgements">
