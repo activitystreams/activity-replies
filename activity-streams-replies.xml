@@ -22,14 +22,30 @@
     <date month="April" year="2011" />
 
     <abstract>
-      <t>TBD</t>
+      <t>This specification details an extension to the JSON Activity Streams
+      to express the serialization of responses and reactions to an Activity or
+      an Object.</t>
     </abstract>
 
   </front>
 
   <middle>
     <section title="Introduction">
-      <t>TBD</t>
+      <t>The Activity Streams specification defines a format for describing
+      socially interesting events, or "Activities", about the people and things 
+      an individual may care about. This specification describes the mechanisms
+      by which responses or reactions to those events or their related objects
+       may also be described.</t>
+      
+      <t>The possible range of reactions to an event or object vary broadly 
+      and include such actions as posting a comment, sharing the event with 
+      others, "liking" or "favoriting" the event or object, RSVP'ing to an
+      event invite and so on. This specification does not attempt to cover 
+      the full range of possible reactions. Rather, it seeks to establish a
+      common pattern for the expression of those reactions within an Activity
+      Stream and defines a set of extension properties exemplifying that 
+      pattern.</t>
+      
     </section>
 
     <section title="Notational Conventions">
@@ -63,6 +79,14 @@
     ]
   }
 ]]></artwork></figure>
+          
+       <t>In many cases, such as when an object appears as a member of a collection
+       of objects in a property that clearly indicates a response or reaction 
+       relationship with a parent object, the <spanx style="verb">inReplyTo</spanx>
+       property can be implied. For instance, the <spanx style="verb">replies</spanx>
+       property defined below in <xref target="stream" /> may contain a listing
+       of child objects with an implied <spanx style="verb">inReplyTo</spanx> 
+       property referring to the parent object.</t>
           
     </section> 
 
